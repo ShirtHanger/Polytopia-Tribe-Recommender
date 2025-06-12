@@ -11,21 +11,24 @@ while user_buying not in yes_no_validate:
     user_buying = input("Invalid option, try again: ").lower()
 if user_buying in yes_list:
     print("Cool! Let's get straight to payment!")
-    purchasing = True
+    skipped_to_purchase = True
 else:
     print("Good. We're gonna have fun!")
-    purchasing = False
+    skipped_to_purchase = False
 
 # Checks if user wants to skip to purchasing first
 
-if purchasing:
+if skipped_to_purchase:
     tribe_payment(total_cost)
+    looping = False
+else:
+    looping = True
 
 #####
 
 # Will be set to false when user quits below
 
-looping = True
+# looping = True
 
 # Asks user geographical preference to split them off to a specific question set.
 
@@ -92,15 +95,16 @@ while looping:
     if rerun in no_list:
         looping = False
 
-user_buying = input("Would you like to buy any tribe(s)? (yes/no): ")
-while user_buying not in yes_no_validate:
-    user_buying = input("Invalid option, try again: ").lower()
-print("---------")
-print("---------")
-if user_buying in yes_list:
-    tribe_payment(total_cost)
-else:
-    suggested_tribe_showcase(recommended_tribes)
+if not skipped_to_purchase:
+    user_buying = input("Would you like to buy any tribe(s)? (yes/no): ")
+    while user_buying not in yes_no_validate:
+        user_buying = input("Invalid option, try again: ").lower()
+    print("---------")
+    print("---------")
+    if user_buying in yes_list:
+        tribe_payment(total_cost)
+    else:
+        suggested_tribe_showcase(recommended_tribes)
 
 
 print("Thanks for using the PTRP!")

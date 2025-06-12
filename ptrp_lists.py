@@ -1,4 +1,4 @@
-from end_messages import *
+from ptrp_end_messages import *
 
 ######################################################################
 
